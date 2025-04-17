@@ -76,13 +76,13 @@
       <template v-if="toastType !== 'default' || toast.icon || toast.promise">
         <div data-icon="" :class="cn(classes?.icon, toast?.classes?.icon)">
           <component :is="toast.icon" v-if="toast.icon" />
-          <template v-else>
+          <Transition v-else name="fade" mode="out-in">
             <slot v-if="toastType === 'loading'" name="loading-icon" />
             <slot v-else-if="toastType === 'success'" name="success-icon" />
             <slot v-else-if="toastType === 'error'" name="error-icon" />
             <slot v-else-if="toastType === 'warning'" name="warning-icon" />
             <slot v-else-if="toastType === 'info'" name="info-icon" />
-          </template>
+          </Transition>
         </div>
       </template>
 
